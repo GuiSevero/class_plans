@@ -28,7 +28,7 @@ class ClassPlanController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','typeahead','tokens','tag'),
+				'actions'=>array('index','view','typeahead','tokens','tag', 'plan'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -63,6 +63,23 @@ class ClassPlanController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
+	}
+
+	/**
+	 * Displays a particular model to students.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionPlan($id)
+	{
+		$this->layout = false;
+
+		$model = $this->loadModel($id);
+
+		if (!$model->released) throw new CHttpException(404);
+
+		$this->render('student',array(
 			'model'=>$this->loadModel($id),
 		));
 	}

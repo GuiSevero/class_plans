@@ -14,12 +14,25 @@
  * @property string $tags
  * @property boolean $released
  * @property integer $id_owner
+ * @property string $descricao
+ * @property string $theme
  *
  * The followings are the available model relations:
  * @property User $idOwner
  */
 class ClassPlan extends CActiveRecord
 {
+
+	public static $themes = array(
+			"amelia"=>"Amelia"
+		,	"cyborg"=>"Cyborg"
+		,	"flatly"=>"Flatly"
+		,	"readable"=>"Readable"
+		,	"slate"=>"Slate"
+		,	"united"=>"United"
+		,	"yeti"=>"Yeti"
+
+	);
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -46,9 +59,9 @@ class ClassPlan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, id_owner', 'required'),
+			array('title, id_owner, description', 'required'),
 			array('id_owner', 'numerical', 'integerOnly'=>true),
-			array('objectives, contents, resources, evaluation, sobek_keywords, tags, released', 'safe'),
+			array('objectives, contents, resources, evaluation, sobek_keywords, tags, released, description, theme', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id_class, title, objectives, contents, resources, evaluation, sobek_keywords, tags, released, id_owner', 'safe', 'on'=>'search'),
@@ -80,9 +93,12 @@ class ClassPlan extends CActiveRecord
 			'resources' => 'Recursos',
 			'evaluation' => 'Avaliação',
 			'sobek_keywords' => 'Sobek Keywords',
-			'tags' => 'Tags',
-			'released' => 'Pronto',
+			'tags' => 'Marcadores',
+			'released' => 'Publicado',
 			'id_owner' => 'Id Owner',
+			'theme'=>'Tema',
+			'description'=>'Descrição',
+
 		);
 	}
 

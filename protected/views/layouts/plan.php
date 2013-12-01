@@ -1,6 +1,6 @@
 <?php /* @var $this Controller */ ?>
 
-<html lang="pt">
+<html lang="en">
   <head>
  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -95,6 +95,7 @@
         <div class="row">
           <div class="col-lg-12">
             <ul class="list-unstyled">
+              <li class="pull-right"><a href="#top">Voltar para o início</a></li>
               <li><a href="http://www.ufrgs.br">Universidade Federal do Rio Grande do Sul</a></li>
               <li><a href="http://gtech.ufrgs.br">Grupo Gtech de Pesquisa</a></li>
               <li><a href="http://sobek.ufrgs.br">SOBEK Text Mining</a></li>

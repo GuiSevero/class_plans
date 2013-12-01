@@ -2,17 +2,19 @@
 /* @var $this ClassPlanController */
 /* @var $model ClassPlan */
 /* @var $form CActiveForm */
-Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl .'/js/jquery.tokeninput.js');
+$baseUrl = Yii::app()->request->baseUrl;
+Yii::app()->clientScript->registerScriptFile($baseUrl .'/js/jquery.tokeninput.js');
 Yii::app()->clientScript->registerScriptFile('https://www.google.com/jsapi');
-Yii::app()->clientScript->registerCSSFile(Yii::app()->request->baseUrl .'/css/tokeninput/token-input.css');
-Yii::app()->clientScript->registerCSSFile(Yii::app()->request->baseUrl .'/css/tokeninput/token-input-facebook.css');
-Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl .'/js/tinymce/tinymce.min.js');
-Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl .'/js/sobek.js');
+Yii::app()->clientScript->registerCSSFile($baseUrl .'/css/tokeninput/token-input.css');
+Yii::app()->clientScript->registerCSSFile($baseUrl .'/css/tokeninput/token-input-facebook.css');
+Yii::app()->clientScript->registerScriptFile($baseUrl .'/js/tinymce/tinymce.min.js');
+Yii::app()->clientScript->registerScriptFile($baseUrl .'/js/sobek.js');
 
 $url_tokens = Yii::app()->createUrl('/site/tokens');
 $url_new_token = Yii::app()->createUrl('/site/addToken');
-Yii::app()->clientScript->registerScript('text-areas',"
 
+Yii::app()->clientScript->registerScript('helper_script',"
+	
 	var population = $('#ClassPlan_tags').val().split(' ');
 
 	if($('#ClassPlan_tags').val() == '')
@@ -42,6 +44,14 @@ Yii::app()->clientScript->registerScript('text-areas',"
 			},
 
 	});
+
+	$('#ClassPlan_theme').change(function(){
+		var src = \"{$baseUrl}/css/templates/\" + $(this).val() + '.png';
+		$('#theme-thumbnail').attr('src', src);
+
+	});
+
+
 ");
 
 
@@ -75,17 +85,19 @@ Yii::app()->clientScript->registerScript('text-areas',"
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'tags', array('class'=>'col-sm-2 control-label')); ?>
+		<?php echo $form->labelEx($model,'description', array('class'=>'col-sm-2 control-label')); ?>
 		<div class="col-sm-10">
-			<?php echo $form->textField($model,'tags', array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'tags'); ?>
+			<?php echo $form->textArea($model,'description', array('class'=>'form-control input-xlg','rows'=>5, 'cols'=>50)); ?>
+			<?php echo $form->error($model,'description'); ?>
 		</div>
 	</div>
+
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'released', array('class'=>'col-sm-2 control-label')	); ?>
 		<div class="col-sm-10">
-			<?php echo $form->checkBox($model,'released'); ?>
+			<p class="form-control"><?php echo $model->released ? 'Aula publicada' : 'Aula ainda não publicada'; ?></p>	
+			<?php echo $form->hiddenField($model,'released'); ?>
 			<?php echo $form->error($model,'released'); ?>
 		</div>
 	</div>
@@ -102,36 +114,59 @@ Yii::app()->clientScript->registerScript('text-areas',"
 	<div class="tab-content">
 	  <div class="tab-pane active" id="objetivos">
   		<div class="form-group">
-			<?php echo $form->textArea($model,'objectives',array('rows'=>20, 'cols'=>50, 'class'=>'form-control')); ?>
+			<?php echo $form->textArea($model,'objectives',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
 			<?php echo $form->error($model,'objectives'); ?>
 		</div>
 	  </div>
 	  <div class="tab-pane" id="conteudo">
 		  	<div class="form-group">
-		<?php echo $form->textArea($model,'contents',array('rows'=>20, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'contents',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
 		<?php echo $form->error($model,'contents'); ?>
 	</div>
 	  </div>
 	  <div class="tab-pane" id="recursos">
 	  	<div class="form-group">
-		<?php echo $form->textArea($model,'resources',array('rows'=>20, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'resources',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
 		<?php echo $form->error($model,'resources'); ?>
 	</div>
 	  </div>
 	  <div class="tab-pane" id="avaliacao">
 		<div class="form-group">
-			<?php echo $form->textArea($model,'evaluation',array('rows'=>20, 'cols'=>50, 'class'=>'form-control')); ?>
+			<?php echo $form->textArea($model,'evaluation',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
 			<?php echo $form->error($model,'evaluation'); ?>
 		</div>
 	  </div>
 	</div> <!-- /tab -->
 
-<div class="form-group">
-		<div class="col-sm-12">
-			<?php echo $form->hiddenField($model,'sobek_keywords',array('rows'=>20, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Adicionar' : 'Salvar', array('class'=>'btn btn-default pull-right')); ?>
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'tags', array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->textField($model,'tags', array('class'=>'form-control')); ?>
+			<?php echo $form->error($model,'tags'); ?>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'theme',array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->dropDownList($model,'theme',ClassPlan::$themes, array('class'=>'form-control')); ?><br />
+			<?php echo CHtml::image(Yii::app()->request->baseUrl ."/css/templates/{$model->theme}.png", 'Tema', array('class'=>"img-responsive img-thumbnail", 'id'=>'theme-thumbnail')); ?>
+			<hr>
+			<?php echo $form->error($model,'theme'); ?>
+		</div>
+	</div>
+
+<div class="form-group">
+		<div class="col-sm-10">
+			<?php echo $form->hiddenField($model,'sobek_keywords',array('rows'=>20, 'cols'=>50, 'class'=>'form-control')); ?>
+			<?php echo CHtml::submitButton('Salvar e Publicar', array('class'=>'btn btn-default pull-right', 'onclick'=>"$('#ClassPlan_released').val(1)")); ?>
+			
+		</div>
+		<div class="col-sm-2">
+			<?php echo CHtml::submitButton('Apenas Salvar', array('class'=>'btn btn-default', 'onclick'=>"$('#ClassPlan_released').val(0)")); ?>
+		</div>
+</div>
 
 </div>
 <div class="col-sm-4">

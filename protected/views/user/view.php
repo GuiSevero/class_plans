@@ -25,14 +25,16 @@ $this->menu=array(
 
 <?php if(count($model->classes) < 1): ?>
 	<h4> Não há Planos de Aula cadastrados. </h4>
-	<?php echo CHtml::link('Cadastrar Plano', array('/classPlan/create'), array('class'=>'btn btn-primary')); ?>
+		<?php  if($model->id_user == Yii::app()->user->getId())
+					echo CHtml::link('Cadastrar Plano', array('/classPlan/create'), array('class'=>'btn btn-primary')); 
+		?>
 <?php else:?>
 <table class="table table-hover table-striped">
 	<thead>
           <tr>
             <th>Plano de Aula</th>
-            <th>Pronta</th>
-            <th>Tags</th>
+            <th>Publicada</th>
+            <th>Marcadores</th>
             <?php if($model->id_user == Yii::app()->user->getId()): ?>
             <th>Menu</th>
             <?php endif; ?>

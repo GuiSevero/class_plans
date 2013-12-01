@@ -41,11 +41,13 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+				'plan/<id:\d+>'=>'classPlan/plan',
+
 				'aulas'=>'classPlan',
 				'aulas/<id:\d+>'=>'classPlan/view',
 				'aulas/<action:\w+>/<id:\d+>'=>'classPlan/<action>',
 				'aulas/<action:\w+>'=>'/classPlan/<action>',
-				
+
 				'usuario'=>'user',
 				'usuario/<id:\d+>'=>'user/view',
 				'usuario/<action:\w+>/<id:\d+>'=>'user/<action>',

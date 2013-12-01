@@ -16,10 +16,18 @@ $this->menu=array(
 );
 ?>
 
-<h1><?php echo $model->title; ?></h1>
+<h1>
+	<?php echo $model->title; ?>
+	<?php if($model->released): ?>
+	<?php endif; ?>
+</h1>
+<b>Link para o Aluno:</b> <?php echo CHtml::link('http://' .$_SERVER['SERVER_NAME'] .$this->createUrl('/classPlan/plan', array('id'=>$model->id_class)), array('/classPlan/plan', 'id'=>$model->id_class), array('class'=>'', 'target'=>'blank')); ?><br />
+
  <?php foreach (explode(' ', $model->tags) as $tag):?> 
   <small><?php if($tag != '') echo CHtml::link($tag, array('/classPlan/tag', 'tag'=>$tag), array('class'=>'btn btn-info btn-xs')); ?></small>
  <?php endforeach;?>
+<h3>Descrição</h3>
+<p><?php echo $model->description ?></p>
 <h3>Objetivos</h3>
 <p><?php echo $model->objectives ?></p>
 <h3>Conteúdo</h3>
@@ -28,6 +36,7 @@ $this->menu=array(
 <p><?php echo $model->resources; ?></p>
 <h3>Sistema de Avaliação</h3>
 <p><?php echo $model->evaluation; ?></p>
+
 
 
 <?php if($model->id_owner == Yii::app()->user->getId()): ?>
