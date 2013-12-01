@@ -129,7 +129,7 @@
     {                              
     name: 'tags',                                                        
     remote: '<?php echo Yii::app()->createUrl("/classPlan/tokens"); ?>?q=%QUERY', 
-    header:"<h4>Tags</h4>"
+    header:"<h4>Marcadores</h4>"
     }
   ]).attr('style','')
   .removeClass('tt-query')
