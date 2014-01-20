@@ -19,8 +19,19 @@ if ($texto) {
     $fh = fopen('tmp/' . $arqIn, 'w') or die("can't open file");
     fwrite($fh, $texto); fclose($fh);
 
-    $ret = exec('java -jar sobek.jar ' . 'tmp/' . $arqIn, $result, $res); 
-	echo implode($result, ' ');
+    $ret = exec('java -jar sobek.jar ' . 'tmp/' . $arqIn, $result, $res);
+
+    $out = Array();
+
+    for($i=0; $i < 10; $i++){
+    	if (count($result) > $i) 
+    		$out[] = $result[$i];
+    	else
+    		return;
+    }
+
+	echo implode($out, ' ');
+
     unlink('tmp/'.$arqIn);
   //  unlink('tmp/'.$ran.'_Result.txt');
     

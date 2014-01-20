@@ -23,12 +23,12 @@ $this->breadcrumbs=array(
 
 <div class="form-group">
 	<?php echo $form->labelEx($model,'username'); ?>
-	<?php echo $form->textField($model,'username', array('class'=>'form-control', 'placeholder'=>'Digite um nome de usuário')); ?>
+	<?php echo $form->textField($model,'username', array('class'=>'form-control', 'type'=>'email', 'placeholder'=>'Digite um nome de usuário')); ?>
 	<?php echo $form->error($model,'username'); ?>
   </div>
   <div class="form-group">
     <?php echo $form->labelEx($model,'password'); ?>
-	<?php echo $form->passwordField($model,'password', array('class'=>'form-control', 'placeholder'=>'Digite um nome de usuário')); ?>
+	<?php echo $form->passwordField($model,'password', array('class'=>'form-control', 'placeholder'=>'Digite uma senha')); ?>
 	<?php echo $form->error($model,'password'); ?>
   </div>
   <div class="checkbox rememberMe">

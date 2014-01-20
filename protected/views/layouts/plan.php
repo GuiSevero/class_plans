@@ -23,7 +23,7 @@
 </head>
 <body>
 
- <div class="navbar navbar-default navbar-fixed-top">
+ <div class="navbar navbar-default navbar-fixed-top" id="navbar-main">
       <div class="container">
         <div class="navbar-header">
           <a href="<?php echo $this->createUrl('/site/index')?>" class="navbar-brand">

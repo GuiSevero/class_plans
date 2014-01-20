@@ -74,7 +74,7 @@ Yii::app()->clientScript->registerScript('helper_script',"
 		//echo $form->errorSummary($model, $header, $footer); 
 	?>
 <div class="row">
-<div class="col-sm-8">
+<div class="col-sm-12">
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'title', array('class'=>'col-sm-2 control-label')); ?>
@@ -96,7 +96,14 @@ Yii::app()->clientScript->registerScript('helper_script',"
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'released', array('class'=>'col-sm-2 control-label')	); ?>
 		<div class="col-sm-10">
-			<p class="form-control"><?php echo $model->released ? 'Aula publicada' : 'Aula ainda não publicada'; ?></p>	
+			<?php if($model->released): ?>
+				<p class="form-control">
+					<?php $text = "http://{$_SERVER['SERVER_NAME']}{$this->createUrl('/classPlan/plan', array('id'=>$model->id_class))}"; ?>
+					<?php echo CHtml::link($text, array('/classPlan/plan', 'id'=>$model->id_class), array('target'=>'blank')); ?>
+				</p>	
+			<?php else: ?>
+				<p class="form-control">Aula ainda não publicada</p>	
+		   <?php endif; ?>
 			<?php echo $form->hiddenField($model,'released'); ?>
 			<?php echo $form->error($model,'released'); ?>
 		</div>
@@ -111,32 +118,39 @@ Yii::app()->clientScript->registerScript('helper_script',"
 	</ul>
 
 	<!-- Tab panes -->
-	<div class="tab-content">
-	  <div class="tab-pane active" id="objetivos">
-  		<div class="form-group">
-			<?php echo $form->textArea($model,'objectives',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
-			<?php echo $form->error($model,'objectives'); ?>
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="tab-content">
+			  <div class="tab-pane active" id="objetivos">
+		  		<div class="form-group">
+					<?php echo $form->textArea($model,'objectives',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
+					<?php echo $form->error($model,'objectives'); ?>
+				</div>
+			  </div>
+			  <div class="tab-pane" id="conteudo">
+				  	<div class="form-group">
+				<?php echo $form->textArea($model,'contents',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
+				<?php echo $form->error($model,'contents'); ?>
+			</div>
+			  </div>
+			  <div class="tab-pane" id="recursos">
+			  	<div class="form-group">
+				<?php echo $form->textArea($model,'resources',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
+				<?php echo $form->error($model,'resources'); ?>
+			</div>
+			  </div>
+			  <div class="tab-pane" id="avaliacao">
+				<div class="form-group">
+					<?php echo $form->textArea($model,'evaluation',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
+					<?php echo $form->error($model,'evaluation'); ?>
+				</div>
+			  </div>
+			</div> <!-- /tab -->
 		</div>
-	  </div>
-	  <div class="tab-pane" id="conteudo">
-		  	<div class="form-group">
-		<?php echo $form->textArea($model,'contents',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
-		<?php echo $form->error($model,'contents'); ?>
-	</div>
-	  </div>
-	  <div class="tab-pane" id="recursos">
-	  	<div class="form-group">
-		<?php echo $form->textArea($model,'resources',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
-		<?php echo $form->error($model,'resources'); ?>
-	</div>
-	  </div>
-	  <div class="tab-pane" id="avaliacao">
-		<div class="form-group">
-			<?php echo $form->textArea($model,'evaluation',array('rows'=>20, 'cols'=>50, 'class'=>'form-control tinytext')); ?>
-			<?php echo $form->error($model,'evaluation'); ?>
+		<div class="col-sm-4">
+			<div id="searchcontrol" style="padding: 10px; max-height: 500px; overflow: auto;"></div>
 		</div>
-	  </div>
-	</div> <!-- /tab -->
+	</div>
 
 
 	<div class="form-group">
@@ -168,9 +182,6 @@ Yii::app()->clientScript->registerScript('helper_script',"
 		</div>
 </div>
 
-</div>
-<div class="col-sm-4">
-	<div id="searchcontrol"></div>
 </div>
 </div>
 

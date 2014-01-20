@@ -21,11 +21,32 @@ $this->menu=array(
 	<?php if($model->released): ?>
 	<?php endif; ?>
 </h1>
-<b>Link para o Aluno:</b> <?php echo CHtml::link('http://' .$_SERVER['SERVER_NAME'] .$this->createUrl('/classPlan/plan', array('id'=>$model->id_class)), array('/classPlan/plan', 'id'=>$model->id_class), array('class'=>'', 'target'=>'blank')); ?><br />
 
- <?php foreach (explode(' ', $model->tags) as $tag):?> 
-  <small><?php if($tag != '') echo CHtml::link($tag, array('/classPlan/tag', 'tag'=>$tag), array('class'=>'btn btn-info btn-xs')); ?></small>
- <?php endforeach;?>
+<div class="row">
+	<div class="col-lg-10">
+		<p><?php echo CHtml::link('Versão Aluno', array('/classPlan/plan', 'id'=>$model->id_class), array('class'=>'btn btn-primary btn-xs', 'target'=>'blank')); ?><br /></p>
+		<p>
+		 <?php foreach (explode(' ', $model->tags) as $tag):?> 
+		  <small><?php if($tag != '') echo CHtml::link($tag, array('/classPlan/tag', 'tag'=>$tag), array('class'=>'btn btn-info btn-xs')); ?></small>
+		 <?php endforeach;?>
+		</p>
+	</div>
+<div class="col-lg-2">
+	<?php if($model->id_owner == Yii::app()->user->getId()): ?>
+	  	 	<p>
+				<?php echo CHtml::link('Editar', array('/classPlan/update', 'id'=>$model->id_class), array('class'=>'btn btn-primary btn-xs')); ?>
+			<?php echo CHtml::link("Excluir",'#', array(
+					'submit'=>array('/classPlan/delete', 'id'=>$model->id_class),
+					'confirm'=>"Você deseja deletar este plano?",
+					'class'=>'btn btn-danger btn-xs',
+					'title'=>'Excluir'
+					
+				))?>
+		</p>		
+	 <?php endif; ?>
+</div>
+</div>
+
 <h3>Descrição</h3>
 <p><?php echo $model->description ?></p>
 <h3>Objetivos</h3>

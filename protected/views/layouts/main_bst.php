@@ -23,7 +23,7 @@
 </head>
 <body>
 
- <div class="navbar navbar-default navbar-fixed-top">
+ <div class="navbar navbar-default navbar-fixed-top" id="navbar-main">
       <div class="container">
         <div class="navbar-header">
           <a href="<?php echo $this->createUrl('/site/index')?>" class="navbar-brand">
@@ -42,7 +42,7 @@
                 <a href="<?php echo $this->createUrl('/user/view', array('id'=>Yii::app()->user->getId()))?>">Minhas Aulas</a>
               </li>  
               <li>
-                <a href="<?php echo $this->createUrl('/classPlan/create', array('view'=>'pastas'))?>">Criar Aula</a>
+                <a href="<?php echo $this->createUrl('/classPlan/create')?>">Criar Aula</a>
               </li> 
               <?php endif; ?>
               <li>
