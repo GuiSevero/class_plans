@@ -48,7 +48,7 @@ class UserIdentity extends CUserIdentity
 
 			
 			//Carrega atributos do usuário
-	   		$user = new user();
+	   		$user = new User();
 	   		$user = $user->find('email = :email',array('email'=>$this->username));
 	   					
 		

@@ -186,16 +186,18 @@ class UserController extends Controller
 					'id_user'
 				,	'name'
 				,	'last_name'
+				, 	'email'
 		);
 
 		$command->from('user');
-		$command->where = "name ILIKE '%{$q}%' OR last_name ILIKE '%{$q}%'";
+		$command->where = "name ILIKE '%{$q}%' OR last_name ILIKE '%{$q}%' OR email ILIKE '%{$q}%'";
 		$command->select = implode(', ', $select);
 		
 		$result =  array_map(function($item){
 			return array(
 				'name'=>$item['name'] .' ' .$item['last_name'],
 				'value'=>$item['name'] .' ' .$item['last_name'],
+				'email'=>$item['email'],
 				'url'=> Yii::app()->createUrl('/user/view',array('id'=>$item['id_user'])),
 				'tokens'=>array($item['name'], $item['last_name'])
 
