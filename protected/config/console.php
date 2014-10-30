@@ -12,7 +12,11 @@ return array(
 	// application components
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+			'connectionString' => 'pgsql:host=localhost;dbname=planos',
+			//'emulatePrepare' => true,
+			'username' => 'postgres',
+			'password' => '***',
+			'charset' => 'utf8',
 		),
 		// uncomment the following to use a MySQL database
 		/*

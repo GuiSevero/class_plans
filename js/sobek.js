@@ -36,10 +36,10 @@ function googleSearch(e){
      ed = tinyMCE.get('ClassPlan_contents');
      text += $(ed.getContent()).text();
 
+     console.log(text);
+
      $.post('/class_plans/sobek.php', {texto: text}, function(data){
           
-
-         
           console.log("SEARCHING DATA: " + data);
           var params = {
                cx: '000801171867195628794:8oqdsykmvia',

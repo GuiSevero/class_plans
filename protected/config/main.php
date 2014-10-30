@@ -65,7 +65,7 @@ return array(
 			'connectionString' => 'pgsql:host=localhost;dbname=planos',
 			//'emulatePrepare' => true,
 			'username' => 'postgres',
-			'password' => '***',
+			'password' => 'gorder',
 			'charset' => 'utf8',
 		),
 		
