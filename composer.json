@@ -1,6 +1,0 @@
-{
-    "require": {
-        "facebook/php-sdk" : "3.2.3",
-		"underscore/underscore.php": "dev-master"
-    }
-}
