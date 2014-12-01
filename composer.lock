@@ -1,0 +1,101 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "e4845769b5b169cfe21bf142a7881361",
+    "packages": [
+        {
+            "name": "facebook/php-sdk",
+            "version": "v3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/facebook-php-sdk.git",
+                "reference": "6714042fa2f5979d4c64c7d11fb4bcab16bdf6cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/facebook-php-sdk/zipball/6714042fa2f5979d4c64c7d11fb4bcab16bdf6cb",
+                "reference": "6714042fa2f5979d4c64c7d11fb4bcab16bdf6cb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Facebook",
+                    "homepage": "https://github.com/facebook/facebook-php-sdk/contributors"
+                }
+            ],
+            "description": "Facebook PHP SDK",
+            "homepage": "https://github.com/facebook/facebook-php-sdk",
+            "keywords": [
+                "facebook",
+                "sdk"
+            ],
+            "time": "2013-11-19 23:11:14"
+        },
+        {
+            "name": "underscore/underscore.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ActiveObject/Underscore.php.git",
+                "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ActiveObject/Underscore.php/zipball/1801b881c2596e9d95ca6628fb62db882f16aa7d",
+                "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "underscore.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Underscore.php is a PHP port of Underscore.js.",
+            "homepage": "http://brianhaveri.github.com/Underscore.php",
+            "keywords": [
+                "functional",
+                "underscore",
+                "util"
+            ],
+            "time": "2012-05-08 22:12:27"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "underscore/underscore.php": 20
+    },
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
+}
