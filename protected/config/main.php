@@ -62,10 +62,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'pgsql:host=localhost;dbname=planos',
+			'connectionString' => 'pgsql:host=ec2-23-23-210-37.compute-1.amazonaws.com;dbname=d92fgdr2b74dbh',
 			//'emulatePrepare' => true,
-			'username' => 'postgres',
-			'password' => 'gorder',
+			'username' => 'naxrqsynwxglpe',
+			'password' => 'qcidiAU64hAoUogfKZ0cRyO98X',
 			'charset' => 'utf8',
 		),
 		
