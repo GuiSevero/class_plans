@@ -5,6 +5,8 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+if(!getenv("DATABASE_URL"))
+	putenv("DATABASE_URL=postgres://postgres:gorder@localhost:5432/planos");
 
 $url = parse_url(getenv("DATABASE_URL"));
 $host = $url["host"];
@@ -69,10 +71,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'pgsql:host={$host};dbname={$database}',
+			'connectionString' => "pgsql:host={$host};dbname={$database}",
 			//'emulatePrepare' => true,
-			'username' => '{$username}',
-			'password' => '{$password}',
+			'username' => "{$username}",
+			'password' => "{$password}",
 			'charset' => 'utf8',
 		),
 		

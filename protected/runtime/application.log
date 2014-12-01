@@ -194,3 +194,63 @@ Stack trace:
 REQUEST_URI=/class_plans/index.php/usuario/2
 HTTP_REFERER=http://localhost/class_plans/
 ---
+2014/12/01 21:03:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[08006] [7] could not translate host name "{$host}" to address: Unknown server error' in C:\xampp\htdocs\class_plans\vendor\yii\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\class_plans\vendor\yii\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\xampp\htdocs\class_plans\vendor\yii\framework\base\CApplication.php(450): CModule->getComponent('db')
+#4 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\ar\CActiveRecord.php(634): CApplication->getDb()
+#5 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\ar\CActiveRecord.php(1428): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\ar\CActiveRecord.php(1484): CActiveRecord->getTableAlias(true)
+#7 C:\xampp\htdocs\class_plans\protected\controllers\ClassPlanController.php(185): CActiveRecord->findByPk('8')
+#8 C:\xampp\htdocs\class_plans\protected\controllers\ClassPlanController.php(66): ClassPlanController->loadModel('8')
+#9 [internal function]: ClassPlanController->actionView('8')
+#10 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(ClassPlanController), Array)
+#11 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClassPlanController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#21 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('classPlan/view')
+#22 C:\xampp\htdocs\class_plans\vendor\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\class_plans\index.php(16): CApplication->run()
+#24 {main}
+REQUEST_URI=/class_plans/index.php/aulas/8
+HTTP_REFERER=http://localhost/class_plans/index.php/usuario/2
+---
+2014/12/01 21:04:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[08006] [7] could not translate host name "dbname=" to address: Unknown server error' in C:\xampp\htdocs\class_plans\vendor\yii\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\class_plans\vendor\yii\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\xampp\htdocs\class_plans\vendor\yii\framework\base\CApplication.php(450): CModule->getComponent('db')
+#4 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\ar\CActiveRecord.php(634): CApplication->getDb()
+#5 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\ar\CActiveRecord.php(1428): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\class_plans\vendor\yii\framework\db\ar\CActiveRecord.php(1484): CActiveRecord->getTableAlias(true)
+#7 C:\xampp\htdocs\class_plans\protected\controllers\ClassPlanController.php(185): CActiveRecord->findByPk('8')
+#8 C:\xampp\htdocs\class_plans\protected\controllers\ClassPlanController.php(66): ClassPlanController->loadModel('8')
+#9 [internal function]: ClassPlanController->actionView('8')
+#10 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(ClassPlanController), Array)
+#11 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClassPlanController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#21 C:\xampp\htdocs\class_plans\vendor\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('classPlan/view')
+#22 C:\xampp\htdocs\class_plans\vendor\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\class_plans\index.php(16): CApplication->run()
+#24 {main}
+REQUEST_URI=/class_plans/index.php/aulas/8
+HTTP_REFERER=http://localhost/class_plans/index.php/usuario/2
+---
