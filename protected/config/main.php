@@ -5,6 +5,13 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+
+$url = parse_url(getenv("DATABASE_URL"));
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
+
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Planos de Aula',
@@ -62,10 +69,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'pgsql:host=ec2-23-23-210-37.compute-1.amazonaws.com;dbname=d92fgdr2b74dbh',
+			'connectionString' => 'pgsql:host={$host};dbname={$database}',
 			//'emulatePrepare' => true,
-			'username' => 'naxrqsynwxglpe',
-			'password' => 'qcidiAU64hAoUogfKZ0cRyO98X',
+			'username' => '{$username}',
+			'password' => '{$password}',
 			'charset' => 'utf8',
 		),
 		
