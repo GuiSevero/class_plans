@@ -5,6 +5,7 @@ date_default_timezone_set('America/Sao_Paulo');
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../yii/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
+$yii=dirname(__FILE__).'/vendor/yii/framework/yii.php';
 
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',true);
