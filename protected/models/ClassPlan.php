@@ -61,10 +61,10 @@ class ClassPlan extends CActiveRecord
 		return array(
 			array('title, id_owner, description', 'required'),
 			array('id_owner', 'numerical', 'integerOnly'=>true),
-			array('objectives, contents, resources, evaluation, sobek_keywords, tags, released, description, theme', 'safe'),
+			array('objectives, contents, access_token, resources, evaluation, sobek_keywords, tags, released, description, theme', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id_class, title, objectives, contents, resources, evaluation, sobek_keywords, tags, released, id_owner', 'safe', 'on'=>'search'),
+			array('id_class, access_token title, objectives, contents, resources, evaluation, sobek_keywords, tags, released, id_owner', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -98,6 +98,7 @@ class ClassPlan extends CActiveRecord
 			'id_owner' => 'Id Owner',
 			'theme'=>'Tema',
 			'description'=>'Descrição',
+			'access_token'=>'Token de Acesso',
 
 		);
 	}

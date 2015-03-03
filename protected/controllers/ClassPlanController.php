@@ -35,7 +35,24 @@ class ClassPlanController extends Controller
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
-				array('allow', // allow authenticated user to perform 'create' and 'update' actions
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('update'),
+				'expression'=>function(){
+
+						//Verifica se tem os parametros
+						if(isset($_GET['id']) && isset($_GET['access_token'])){
+							$model = $this->loadModel($_GET['id']);
+
+						//verifica se o modelo tem um acess token
+						if($model->access_token == null) return false;
+
+						//Concede acesso se token estiver correto
+						return ($model->access_token == $_GET['access_token']);
+					}
+
+				},
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('delete'),
 				'expression'=>function($user, $rule){
 

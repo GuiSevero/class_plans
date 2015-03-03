@@ -4,12 +4,12 @@ class m150303_015626_class_plan_token extends CDbMigration
 {
 	public function up()
 	{
-		$this->addColumn("class_plan", "access_token", "string");
+		$this->addColumn("class", "access_token", "string");
 	}
 
 	public function down()
 	{
-		$this->dropColumn("class_plan", "access_token");
+		$this->dropColumn("class", "access_token");
 	}
 
 	/*
