@@ -12,6 +12,7 @@ Yii::app()->clientScript->registerScriptFile($baseUrl .'/js/sobek.js');
 
 $url_tokens = Yii::app()->createUrl('/site/tokens');
 $url_new_token = Yii::app()->createUrl('/site/addToken');
+$url_access_token = Yii::app()->createUrl('/classplan/generateAccessToken', array('id'=>$model->id_class));
 
 Yii::app()->clientScript->registerScript('helper_script',"
 	
@@ -27,6 +28,15 @@ Yii::app()->clientScript->registerScript('helper_script',"
 			name: population[i]
 		});
 	}
+
+	$('#generate-access-token').click(function(){
+		$.getJSON('{$url_access_token}', function(data){
+			if(data.success){
+				$('#generate-access-token').html(data.url);
+			}
+		});
+
+	});
 
 	$('#ClassPlan_tags').tokenInput('{$url_tokens}',{
 			searchingText: 'Buscando'
@@ -105,6 +115,22 @@ Yii::app()->clientScript->registerScript('helper_script',"
 				<p class="form-control">Aula ainda não publicada</p>	
 		   <?php endif; ?>
 			<?php echo $form->hiddenField($model,'released'); ?>
+			<?php echo $form->error($model,'released'); ?>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'access_token', array('class'=>'col-sm-2 control-label')	); ?>
+		<div class="col-sm-10">
+			<?php if($model->access_token != null): ?>
+				<p class="form-control">
+					<?php $text = "http://{$_SERVER['SERVER_NAME']}{$this->createUrl('/classPlan/update', array('id'=>$model->id_class, 'access_token'=>$model->access_token))}"; ?>
+					<?php echo CHtml::link($text, array('/classPlan/update', 'id'=>$model->id_class, 'access_token'=>$model->access_token), array('target'=>'blank')); ?>
+				</p>	
+			<?php else: ?>
+				<a href="#" id="generate-access-token" class="btn">Gerar token de acesso</a>
+		   <?php endif; ?>
 			<?php echo $form->error($model,'released'); ?>
 		</div>
 	</div>

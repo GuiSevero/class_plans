@@ -1,5 +1,5 @@
 ##User Ignore
-#assets/
-#protected/runtime/
-#protected/temp/
-#protected/libs/
+assets/
+protected/runtime/
+protected/temp/
+protected/libs/

@@ -32,7 +32,7 @@ class ClassPlanController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','generateAccessToken'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -148,6 +148,32 @@ class ClassPlanController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionGenerateAccessToken($id)
+	{
+		$model=$this->loadModel($id);
+
+		$model->access_token = Helper::generateToken();
+
+
+
+		if($model->save()){
+
+			$link = "http://{$_SERVER['SERVER_NAME']}{$this->createUrl('/classPlan/update', array('id'=>$model->id_class, 'access_token'=>$model->access_token))}";
+
+			header("Content-type: application/json");
+			echo json_encode(array('success'=>true, 'url'=>$link));
+			Yii::app()->end();
+			return;
+		}else{
+
+			header("Content-type: application/json");
+			echo json_encode(array('success'=>true, 'url'=>null));
+			Yii::app()->end();
+			return;
+		}
+
 	}
 
 	/**
