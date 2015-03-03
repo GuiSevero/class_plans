@@ -25,7 +25,6 @@ class m141019_183229_create_classplan_table extends CDbMigration
 
 	public function safeDown()
 	{
-		echo "m141019_183229_create_classplan_table does not support migration down.\n";
 		 $this->dropTable('user');
 	}
 }

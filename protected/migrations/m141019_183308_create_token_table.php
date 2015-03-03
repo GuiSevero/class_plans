@@ -16,6 +16,5 @@ class m141019_183308_create_token_table extends CDbMigration
 	public function safeDown()
 	{
 		 $this->dropTable('token');
-		 echo "m141019_183308_create_token_table does not support migration down.\n";
 	}
 }
