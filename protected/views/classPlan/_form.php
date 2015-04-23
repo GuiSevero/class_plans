@@ -2,6 +2,16 @@
 /* @var $this ClassPlanController */
 /* @var $model ClassPlan */
 /* @var $form CActiveForm */
+Yii::app()->clientScript->registerScript('multiple-select',"
+	$(\"select[multiple]\").bind(\"mousedown\", function(e) {
+    	$(this).data(\"remove\", !$(e.target).is(\":selected\"));
+    	$(this).data(\"selected\", $(this).find(\":selected\"));
+ 	 }).bind(\"mouseup\", function(e){
+    	$(this).data(\"selected\").attr(\"selected\", \"selected\");
+    	e.target.selected = $(this).data(\"remove\");
+  		});
+");
+
 $baseUrl = Yii::app()->request->baseUrl;
 Yii::app()->clientScript->registerScriptFile($baseUrl .'/js/jquery.tokeninput.js');
 Yii::app()->clientScript->registerScriptFile('https://www.google.com/jsapi');
@@ -184,6 +194,15 @@ Yii::app()->clientScript->registerScript('helper_script',"
 		<div class="col-sm-10">
 			<?php echo $form->textField($model,'tags', array('class'=>'form-control')); ?>
 			<?php echo $form->error($model,'tags'); ?>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'participants', array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->listBox($model,'participants',CHtml::listData($users,'id_user', 'email') ,array('class'=>'form-control', 'multiple'=>'multiple', 'size'=>10)); ?>
+			<?php echo $form->error($model,'participants'); ?>
 		</div>
 	</div>
 

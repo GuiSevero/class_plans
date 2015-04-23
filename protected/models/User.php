@@ -12,6 +12,7 @@
  *
  * The followings are the available model relations:
  * @property Class[] $classes
+ * @property $participations
  */
 class User extends CActiveRecord
 {
@@ -61,6 +62,7 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'classes' => array(self::HAS_MANY, 'ClassPlan', 'id_owner'),
+			'participations' => array(self::MANY_MANY, 'Class', 'participation(id_user, id_class)'),
 		);
 	}
 

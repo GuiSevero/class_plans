@@ -110,19 +110,31 @@ class ClassPlanController extends Controller
 		$model=new ClassPlan;
 
 		$model->id_owner = Yii::app()->user->getId();
+		$users = User::model()->findAll(array('order'=>'email', 'condition'=>'id_user <> ' .$model->id_owner));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['ClassPlan']))
 		{
+
+
+			if(isset($_POST['ClassPlan']['participants']))
+				$model->participants = $_POST['ClassPlan']['participants'];
+			
+
 			$model->attributes=$_POST['ClassPlan'];
-			if($model->save())
+
+			if($model->save()){
+
 				$this->redirect(array('view','id'=>$model->id_class));
+
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'users'=>$users,
 		));
 	}
 
@@ -134,12 +146,16 @@ class ClassPlanController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$users = User::model()->findAll(array('order'=>'email', 'condition'=>'id_user <> ' .$model->id_owner));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['ClassPlan']))
 		{
+			if(isset($_POST['ClassPlan']['participants']))
+				$model->participants = $_POST['ClassPlan']['participants'];
+
 			$model->attributes=$_POST['ClassPlan'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id_class));
@@ -147,6 +163,7 @@ class ClassPlanController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'users'=>$users,
 		));
 	}
 

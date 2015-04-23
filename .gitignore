@@ -3,3 +3,4 @@ assets/
 protected/runtime/
 protected/temp/
 protected/libs/
+*.log

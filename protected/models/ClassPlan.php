@@ -18,7 +18,8 @@
  * @property string $theme
  *
  * The followings are the available model relations:
- * @property User $idOwner
+ * @property User $owner
+ * @property User $participants
  */
 class ClassPlan extends CActiveRecord
 {
@@ -77,6 +78,7 @@ class ClassPlan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'owner' => array(self::BELONGS_TO, 'User', 'id_owner'),
+			'participants' => array(self::MANY_MANY, 'User', 'participation(id_class, id_user)'),
 		);
 	}
 
@@ -99,6 +101,7 @@ class ClassPlan extends CActiveRecord
 			'theme'=>'Tema',
 			'description'=>'Descrição',
 			'access_token'=>'Token de Acesso',
+			'participants'=>'Colaboradores',
 
 		);
 	}
@@ -128,5 +131,27 @@ class ClassPlan extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function afterSave()
+	{
+		
+		
+		Participation::model()->deleteAll('id_class = '.$this->id_class);
+		foreach($this->participants as $pt){
+			
+			$part = new Participation();
+			$part->id_user = is_object($pt) ? $pt->id_user : $pt;
+			$part->id_class = $this->id_class;
+
+			if(!$part->save()){
+				return false;
+			}
+
+			unset($part);
+		}
+
+		parent::afterSave();
+		
 	}
 }
